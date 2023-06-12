@@ -4,13 +4,15 @@ import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './header/header.component';
 import { NavComponent } from './nav/nav.component';
+import { ErrorComponent } from './error/error.component';
 
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    NavComponent
+    NavComponent,
+    ErrorComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { NavComponent } from './nav/nav.component';
   ],
   exports: [
     HeaderComponent,
-    NavComponent
+    NavComponent,
+    ErrorComponent
   ]
 })
 export class CoreModule { }

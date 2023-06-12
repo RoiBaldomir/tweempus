@@ -1,0 +1,7 @@
+p {
+  background-color: lightcoral;
+  font-weight: bolder;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+}

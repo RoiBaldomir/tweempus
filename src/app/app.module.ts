@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { CoreModule } from './core/core.module';
+import { LoginModule } from './login/login.module';
+import { ProfileModule } from './profile/profile.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
@@ -15,6 +17,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
+    LoginModule,
+    ProfileModule,
     DashboardModule
   ],
   providers: [],

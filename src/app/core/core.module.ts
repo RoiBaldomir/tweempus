@@ -8,6 +8,7 @@ import { AuthGuardService } from './auth-guard.service';
 import { HeaderComponent } from './header/header.component';
 import { NavComponent } from './nav/nav.component';
 import { ErrorComponent } from './error/error.component';
+import { AuthenticationService } from './authentication.service';
 
 
 
@@ -18,7 +19,8 @@ import { ErrorComponent } from './error/error.component';
     ErrorComponent
   ],
   providers: [
-    AuthGuardService
+    AuthGuardService,
+    AuthenticationService
   ],
   imports: [
     CommonModule,

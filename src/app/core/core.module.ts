@@ -4,33 +4,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AuthGuardService } from './auth-guard.service';
+import { AuthenticationService } from './authentication.service';
 
 import { HeaderComponent } from './header/header.component';
 import { NavComponent } from './nav/nav.component';
-import { ErrorComponent } from './error/error.component';
-import { AuthenticationService } from './authentication.service';
-
-
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    NavComponent,
-    ErrorComponent
-  ],
-  providers: [
-    AuthGuardService,
-    AuthenticationService
-  ],
   imports: [
     CommonModule,
-    RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
-  exports: [
-    HeaderComponent,
-    NavComponent,
-    ErrorComponent
-  ]
+  declarations: [HeaderComponent, NavComponent],
+  providers: [AuthGuardService, AuthenticationService],
+  exports: [HeaderComponent, NavComponent]
 })
 export class CoreModule { }

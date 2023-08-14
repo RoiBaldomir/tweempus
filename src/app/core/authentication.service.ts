@@ -3,17 +3,17 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 import { AuthorService } from '../shared/author/author.service';
 
-import { Author } from '../shared/author/author.model';
 import { Token } from './token.model';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthenticationService {
 
-  private url: string = 'http://localhost:3000/authenticated';
+  private url: string = environment.url + 'authenticated';
 
   token: Token | null = null;
 
@@ -21,13 +21,20 @@ export class AuthenticationService {
     private httpClient: HttpClient,
     private router: Router,
     private authorService: AuthorService
-  ) { }
+  ) { 
+    const token = localStorage.getItem('token');
+    if(token != null) {
+      let tokenLS = JSON.parse(token);
+      this.token = new Token(tokenLS['_key'], tokenLS['_idAuthor']);
+    }
+  }
 
   login(idAuthor: string): void {
     this.authorService.getAuthor(idAuthor).subscribe(author => {
       let tokenGenerated = this.generateToken();
       this.saveSession(tokenGenerated, author.id).subscribe((response: any) => {
         this.token = new Token(response['id'], response['author']);
+        localStorage.setItem('token', JSON.stringify(this.token));
         this.router.navigate(['/dashboard']);
       });
     });
@@ -36,6 +43,7 @@ export class AuthenticationService {
   logout(): void {
     this.deleteSession().subscribe(response => {
       this.token = null;
+      localStorage.removeItem("token");
       this.router.navigate(['/login']);
     });
   }
@@ -74,5 +82,4 @@ export class AuthenticationService {
     console.error(errMsg);
     return throwError(() => errMsg);
   }
-
 }

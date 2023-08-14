@@ -6,7 +6,11 @@ import { AuthGuardService } from '../core/auth-guard.service';
 import { DashboardComponent } from './dashboard.component';
 
 const dashboardRoutes: Routes = [
-    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService] },
+    { 
+        path: 'dashboard', 
+        component: DashboardComponent,
+        canActivate: [AuthGuardService]
+    },
 ];
 
 @NgModule({

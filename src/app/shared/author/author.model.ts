@@ -1,5 +1,5 @@
 export class Author {
-  private _id: string;
+    private _id: string;
     private _url: string;
     private _fullName: string;
     private _image: string;
@@ -29,7 +29,7 @@ export class Author {
 
     set id(id: string) {
         this._id = id;
-    }
+    } 
 
     set url(url: string) {
         this._url = url;
